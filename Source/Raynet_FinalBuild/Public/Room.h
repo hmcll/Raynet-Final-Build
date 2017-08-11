@@ -47,10 +47,47 @@ public:
 	UPROPERTY(BlueprintReadOnly, Replicated)
 		TArray<bool> Player2Terminal;
 
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 VC1;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 VC2;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		EPawn ServerShowingOff1;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		EPawn ServerShowingOff2;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P1DBV;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P1DBL;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P2DBV;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P2DBL;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P1SEV;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P1SEL;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P2SEV;
+
+	UPROPERTY(BlueprintReadOnly, Replicated)
+		int32 P2SEL;
+
 	FVector2D reverseVector(FVector2D in);
 
 	int32 vectorToInt(FVector2D in);
 
 	void addMove(FMove move);
 	
+	EPawn ToggleLineBoost(EPawn from);
 };
