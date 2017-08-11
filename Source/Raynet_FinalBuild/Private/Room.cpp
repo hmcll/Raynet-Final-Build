@@ -78,7 +78,6 @@ void ARoom::addMove(FMove move) {
 					Player1Terminal[0] = TERMINAL_CARD_UNUSED;
 					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P1DBL + P2SEL == 4 ) {
-
 						MoveStack.Add(move);
 						FMove nextMove;
 						nextMove.Type = EMoveType::GameEnd;
@@ -98,8 +97,9 @@ void ARoom::addMove(FMove move) {
 				}
 				if( Board[vectorToInt(move.Point2)] == EPawn::Virus2 ) {
 					P1DBV++;
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P1DBV == 4 ) {
-
 						MoveStack.Add(move);
 						FMove nextMove;
 						nextMove.Type = EMoveType::GameEnd;
@@ -109,12 +109,11 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Lost
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
 				}
 				else if( Board[vectorToInt(move.Point2)] == EPawn::Link2 ) {
 					P1DBL++;
-
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P1DBL + P2SEL == 4 ) {
 						MoveStack.Add(move);
 						FMove nextMove;
@@ -124,13 +123,13 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Win
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
 
 				}
 				else if( Board[vectorToInt(move.Point2)] == EPawn::LineBoostVirus2 ) {
 					P1DBV++;
 					Player2Terminal[0] = TERMINAL_CARD_UNUSED;
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P1DBV == 4 ) {
 						MoveStack.Add(move);
 						FMove nextMove;
@@ -141,12 +140,12 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Lost
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
 				}
 				else if( Board[vectorToInt(move.Point2)] == EPawn::LineBoostLink2 ) {
 					P1DBL++;
 					Player2Terminal[0] = TERMINAL_CARD_UNUSED;
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P1DBL + P2SEL == 4 ) {
 						MoveStack.Add(move);
 						FMove nextMove;
@@ -156,8 +155,6 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Win
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
 
 				}
 				else {
@@ -223,6 +220,8 @@ void ARoom::addMove(FMove move) {
 
 				if( Board[vectorToInt(move.Point2)] == EPawn::Virus1 ) {
 					P2DBV++;
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P2DBV == 4 ) {
 						MoveStack.Add(move);
 						FMove nextMove;
@@ -233,12 +232,11 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Lost
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
 				}
 				else if( Board[vectorToInt(move.Point2)] == EPawn::Link1 ) {
 					P2DBL++;
-
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P2DBL + P1SEL == 4 ) {
 						MoveStack.Add(move);
 						FMove nextMove;
@@ -248,13 +246,13 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Win
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
 
 				}
 				else if( Board[vectorToInt(move.Point2)] == EPawn::LineBoostVirus1 ) {
 					P2DBV++;
 					Player1Terminal[0] = TERMINAL_CARD_UNUSED;
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					if( P2DBV == 4 ) {
 						MoveStack.Add(move);
 						FMove nextMove;
@@ -265,11 +263,11 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Lost
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
 				}
 				else if( Board[vectorToInt(move.Point2)] == EPawn::LineBoostLink1 ) {
 					P2DBL++;
+					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
+					Board[vectorToInt(move.Point)] = EPawn::Null;
 					Player1Terminal[0] = TERMINAL_CARD_UNUSED;
 					if( P2DBL + P1SEL == 4 ) {
 						MoveStack.Add(move);
@@ -280,9 +278,6 @@ void ARoom::addMove(FMove move) {
 						return;
 						// Add Move Win
 					}
-					Board[vectorToInt(move.Point2)] = Board[vectorToInt(move.Point)];
-					Board[vectorToInt(move.Point)] = EPawn::Null;
-
 				}
 				else {
 					auto temp = Board[vectorToInt(move.Point)];
